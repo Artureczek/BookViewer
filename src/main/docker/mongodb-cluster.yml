@@ -1,0 +1,17 @@
+version: '2'
+services:
+    bookviewer-mongodb:
+        container_name: bookviewer-mongodb
+        image: mongo:3.3.12
+        ports:
+            - "27017:27017"
+        command: mongos --configdb bookviewer-mongodb-config
+    bookviewer-mongodb-node:
+        build:
+            context: .
+            dockerfile: mongodb/MongoDB.Dockerfile
+        command: mongod --replSet rs1 --noprealloc --smallfiles
+    bookviewer-mongodb-config:
+        image: mongo:mongo:3.3.12
+        container_name: bookviewer-mongodb-config
+        command: mongod --noprealloc --smallfiles --configsvr --dbpath /data/db

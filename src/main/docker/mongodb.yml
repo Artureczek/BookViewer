@@ -1,0 +1,9 @@
+version: '2'
+services:
+    bookviewer-mongodb:
+        container_name: bookviewer-mongodb
+        image: mongo:3.3.12
+        ports:
+            - "27017:27017"
+        # volumes:
+        #     - ~/volumes/jhipster/BookViewer/mongodb/:/data/db/
