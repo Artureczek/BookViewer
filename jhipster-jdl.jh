@@ -1,0 +1,9 @@
+
+entity UserBookViewerAy {
+	firstName String,
+	lastName String,
+	email String,
+	phoneNumber String,
+	hireDate ZonedDateTime,
+	salary Long
+}
