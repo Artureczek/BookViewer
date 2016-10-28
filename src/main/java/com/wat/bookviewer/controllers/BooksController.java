@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class BooksController {
 
-    @Timed
+    /*@Timed
     @Transactional
     @RequestMapping(value = "/messages/received", method = RequestMethod.POST)
-    /*public MessageResponse getReceivedMessages(@RequestParam Integer page, @RequestParam Integer offset, @RequestBody MessageRequest data) {
+    public MessageResponse getReceivedMessages(@RequestParam Integer page, @RequestParam Integer offset, @RequestBody MessageRequest data) {
         Page<VKomunikat> messages = komunikatService.findAllReceived(page, offset, data);
 
-        return new MessageResponse<>(messages.getContent(), (int) messages.getTotalElements());*/
-    }
+        return new MessageResponse<>(messages.getContent(), (int) messages.getTotalElements());*//*
+    }*/
 
 
 }
