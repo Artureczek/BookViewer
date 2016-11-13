@@ -55,7 +55,7 @@ jhipster:
         #allow-credentials: true
         #max-age: 1800
     mail:
-        from: BookViewer@localhost
+        from: BookViewerAI@gmail.com
     swagger:
         title: BookViewer API
         description: BookViewer API documentation

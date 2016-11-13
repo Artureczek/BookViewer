@@ -1,3 +1,29 @@
+entity ai_books {
+    _id integer,
+    ISBN String,
+    Title String,
+    Author String,
+    Year Number,
+    Publisher String,
+    ImgSmall String,
+    ImgMedium String,
+    ImgLarge String
+}
+
+entity ai_books_rate{
+    _id integer,
+    User-ID Integer,
+    ISBN String,
+    Book-Rating Integer
+}
+
+relationship OneToMany {
+    ai_books_rate{rate} to ai_books
+}
+
+paginate ai_books with infinite-scroll
+
+
 
 entity UserBookViewerAy {
 	firstName String,
@@ -7,3 +33,10 @@ entity UserBookViewerAy {
 	hireDate ZonedDateTime,
 	salary Long
 }
+
+entity Administrator {
+    login String,
+    password String
+}
+
+

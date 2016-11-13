@@ -19,13 +19,21 @@ spring:
             enabled: false
     data:
         mongodb:
-            uri: mongodb://localhost:27017
-            database: BookViewer
+            uri: mongodb://bookai:ZAQ!2wsx@ds151137.mlab.com:51137/books
+            database: books
+            #uri: mongodb://localhost:27017
+            #database: BookViewer
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+        host: smtp.gmail.com
+        port: 587
+        username: BookViewerAI@gmail.com  #Replace this field with your Gmail username.
+        password: ZAQ!2345           #Replace this field with your Gmail password.
+        protocol: smtp
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.gmail.com
     thymeleaf:
         cache: true
 
@@ -49,7 +57,7 @@ jhipster:
             # security key (this key should be unique for your application, and kept secret)
             key: 369cabc24e43d9cea2b3cf95a8c69b116979f9c4
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: BookViewer@localhost
+        from: BookViewerAI@gmail.com
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         spark:
