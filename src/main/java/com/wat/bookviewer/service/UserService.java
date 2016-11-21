@@ -2,6 +2,7 @@ package com.wat.bookviewer.service;
 
 import com.wat.bookviewer.domain.Authority;
 import com.wat.bookviewer.domain.User;
+import com.wat.bookviewer.domain.requests.BookRequest;
 import com.wat.bookviewer.repository.AuthorityRepository;
 import com.wat.bookviewer.repository.PersistentTokenRepository;
 import com.wat.bookviewer.repository.UserRepository;
@@ -11,6 +12,7 @@ import com.wat.bookviewer.service.util.RandomUtil;
 import com.wat.bookviewer.web.rest.vm.ManagedUserVM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
