@@ -20,6 +20,7 @@
 
         vm.login = login;
         vm.logout = logout;
+        vm.booklist = booklist;
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
         vm.$state = $state;
@@ -33,6 +34,10 @@
             collapseNavbar();
             Auth.logout();
             $state.go('home');
+        }
+
+        function booklist() {
+            $state.go('booklist');
         }
 
         function toggleNavbar() {

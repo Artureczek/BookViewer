@@ -5,11 +5,12 @@
         .module('bookViewerApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Auth', 'Principal', 'LoginService', '$state'];
 
-    function HomeController ($scope, Principal, LoginService, $state) {
+    function HomeController ($scope, Auth, Principal, LoginService, $state) {
         var vm = this;
 
+        vm.logout = logout;
         vm.account = null;
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
@@ -28,6 +29,11 @@
         }
         function register () {
             $state.go('register');
+        }
+
+        function logout() {
+            Auth.logout();
+            $state.go('home');
         }
     }
 })();

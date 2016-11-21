@@ -3,12 +3,14 @@
 
     angular
         .module('bookViewerApp', [
-            'ngStorage', 
+            'ngStorage',
             'ngResource',
             'ngCookies',
             'ngAria',
             'ngCacheBuster',
             'ngFileUpload',
+            'ngTable',
+            'angularSpinner',
             'ui.bootstrap',
             'ui.bootstrap.datetimepicker',
             'ui.router',

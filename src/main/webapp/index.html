@@ -10,6 +10,7 @@
     <!-- build:css content/css/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.min.css">
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
     <!-- endinject -->
     <!-- endbuild -->
@@ -21,15 +22,11 @@
     <!--[if lt IE 9]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <page-ribbon></page-ribbon>
+    <!--<page-ribbon></page-ribbon>-->
     <div ui-view="navbar" ng-cloak></div>
     <div class="container">
         <div class="well" ui-view="content">
             <!-- Angular views -->
-        </div>
-
-        <div class="footer" ng-cloak>
-            <p>This is your footer</p>
         </div>
     </div>
 
@@ -50,7 +47,7 @@
     <script src="bower_components/messageformat/messageformat.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>f
     <script src="bower_components/angular-cache-buster/angular-cache-buster.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
@@ -66,6 +63,10 @@
 
     <!-- build:js app/app.js  -->
     <!-- inject:js -->
+
+    <script src="bower_components/ng-table/dist/ng-table.min.js"></script>
+    <script src="bower_components/spin.js/spin.js"></script>
+    <script src="bower_components/angular-spinner/angular-spinner.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/services/user/user.service.js"></script>
     <script src="app/services/profiles/profile.service.js"></script>
@@ -87,25 +88,7 @@
     <script src="app/layouts/error/error.state.js"></script>
     <script src="app/home/home.state.js"></script>
     <script src="app/home/home.controller.js"></script>
-    <script src="app/entities/user-book-viewer-ay/user-book-viewer-ay-dialog.controller.js"></script>
-    <script src="app/entities/user-book-viewer-ay/user-book-viewer-ay-detail.controller.js"></script>
-    <script src="app/entities/user-book-viewer-ay/user-book-viewer-ay-delete-dialog.controller.js"></script>
-    <script src="app/entities/user-book-viewer-ay/user-book-viewer-ay.state.js"></script>
-    <script src="app/entities/user-book-viewer-ay/user-book-viewer-ay.service.js"></script>
-    <script src="app/entities/user-book-viewer-ay/user-book-viewer-ay.controller.js"></script>
     <script src="app/entities/entity.state.js"></script>
-    <script src="app/entities/ai-books/ai-books-dialog.controller.js"></script>
-    <script src="app/entities/ai-books/ai-books-detail.controller.js"></script>
-    <script src="app/entities/ai-books/ai-books-delete-dialog.controller.js"></script>
-    <script src="app/entities/ai-books/ai-books.state.js"></script>
-    <script src="app/entities/ai-books/ai-books.service.js"></script>
-    <script src="app/entities/ai-books/ai-books.controller.js"></script>
-    <script src="app/entities/administrator/administrator-dialog.controller.js"></script>
-    <script src="app/entities/administrator/administrator-detail.controller.js"></script>
-    <script src="app/entities/administrator/administrator-delete-dialog.controller.js"></script>
-    <script src="app/entities/administrator/administrator.state.js"></script>
-    <script src="app/entities/administrator/administrator.service.js"></script>
-    <script src="app/entities/administrator/administrator.controller.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
     <script src="app/components/util/sort-by.directive.js"></script>
@@ -126,6 +109,8 @@
     <script src="app/components/alert/alert-error.directive.js"></script>
     <script src="app/components/alert/alert.service.js"></script>
     <script src="app/components/alert/alert.directive.js"></script>
+    <script src="app/booklist/booklist.state.js"></script>
+    <script src="app/booklist/booklist.controller.js"></script>
     <script src="app/blocks/interceptor/notification.interceptor.js"></script>
     <script src="app/blocks/interceptor/errorhandler.interceptor.js"></script>
     <script src="app/blocks/interceptor/auth-expired.interceptor.js"></script>

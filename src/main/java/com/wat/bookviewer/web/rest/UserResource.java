@@ -3,6 +3,8 @@ package com.wat.bookviewer.web.rest;
 import com.wat.bookviewer.config.Constants;
 import com.codahale.metrics.annotation.Timed;
 import com.wat.bookviewer.domain.User;
+import com.wat.bookviewer.domain.reponse.BookResponse;
+import com.wat.bookviewer.domain.requests.BookRequest;
 import com.wat.bookviewer.repository.UserRepository;
 import com.wat.bookviewer.security.AuthoritiesConstants;
 import com.wat.bookviewer.service.MailService;
@@ -19,6 +21,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -146,7 +149,7 @@ public class UserResource {
 
     /**
      * GET  /users : get all users.
-     * 
+     *
      * @param pageable the pagination information
      * @return the ResponseEntity with status 200 (OK) and with body all users
      * @throws URISyntaxException if the pagination headers couldn't be generated
@@ -163,6 +166,14 @@ public class UserResource {
             .collect(Collectors.toList());
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users");
         return new ResponseEntity<>(managedUserVMs, headers, HttpStatus.OK);
+    }
+
+    @Timed
+    @Transactional
+    @RequestMapping(value = "/users/all", method = RequestMethod.POST)
+    public BookResponse getProcessedMessages() {
+        List<User> list = userRepository.findAll();
+        return new BookResponse<>(list, list.size());
     }
 
     /**
