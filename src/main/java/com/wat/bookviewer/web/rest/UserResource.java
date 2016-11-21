@@ -56,7 +56,7 @@ import java.util.stream.Collectors;
  * <p>Another option would be to have a specific JPA entity graph to handle this case.</p>
  */
 @RestController
-//@RequestMapping("/api")
+@RequestMapping("/api")
 public class UserResource {
 
     private final Logger log = LoggerFactory.getLogger(UserResource.class);
@@ -168,29 +168,12 @@ public class UserResource {
         return new ResponseEntity<>(managedUserVMs, headers, HttpStatus.OK);
     }
 
-   /* @RequestMapping(value = "/users/all",  method = RequestMethod.POST)
-    @Timed
-    @Transactional
-    public ResponseEntity<List<User>> getAllUsers2(){
-        return new ResponseEntity<>(userRepository.findAll());
-    }
-*/
     @Timed
     @Transactional
     @RequestMapping(value = "/users/all", method = RequestMethod.POST)
     public BookResponse getProcessedMessages() {
         List<User> list = userRepository.findAll();
         return new BookResponse<>(list, list.size());
-    }
-
-
-    @RequestMapping(value = "/users/all2",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    @Timed
-    @Transactional
-    public List<User> getAllUsers3(){
-        return userRepository.findAll();
     }
 
     /**

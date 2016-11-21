@@ -9,7 +9,7 @@
 
     function BooklistController(ngTableParams, $http, $state, usSpinnerService/*, NotificationService, sidebarService*/) {
         var vm = this;
-        vm.resourceUrl = 'users/all';
+        vm.resourceUrl = 'api/users/all';
         vm.title = 'Lista Uzytkownikow';
         vm.filter = {};
         vm.loginUser = '';
