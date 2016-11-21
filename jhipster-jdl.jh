@@ -1,27 +1,65 @@
-entity ai_books {
-    _id integer,
-    ISBN String,
-    Title String,
-    Author String,
-    Year Number,
-    Publisher String,
-    ImgSmall String,
-    ImgMedium String,
-    ImgLarge String
+entity Publisher{
+    id Integer
+    name String
 }
 
-entity ai_books_rate{
-    _id integer,
-    User-ID Integer,
-    ISBN String,
-    Book-Rating Integer
+entity Book {
+    id Integer
+    isbn String
+    title String
+    author String
+    year Integer
+    publisher Id Integer
+    imgSmall String
+    imgMedium String
+    imgLarge String
 }
 
-relationship OneToMany {
-    ai_books_rate{rate} to ai_books
+entity Rate {
+    id Integer
+    userId String
+    bookId Integer
+    rate Integer
 }
 
-paginate ai_books with infinite-scroll
+entity Countries{
+    id Integer
+    name String
+    currency String
+}
+
+entity JhiUser{
+    id String
+    login String
+    password String
+    firstName String
+    lastName String
+    activated String
+    langKey String
+    createdBy String
+    createdDay Date
+    authorities Array
+    countryId Integer
+}
+
+entity Purchase{
+    id Integer
+    date Date
+    value Double
+    bookId Integer
+    userId String
+}
+
+relationship OneToMany{
+    Book{publisherId} to Publisher,
+    JhiUser{countryId} to Countries,
+    Rate{bookId} to Book,
+    Rate{userId} to JhiUser,
+    Purchase{bookId} to Book,
+    Purchase{userId} to JhiUser
+}
+
+
 
 
 
@@ -38,5 +76,3 @@ entity Administrator {
     login String,
     password String
 }
-
-
