@@ -10,6 +10,7 @@ import com.wat.bookviewer.repository.UserRepository;
 import com.wat.bookviewer.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -139,7 +140,7 @@ public class BookResource {
     @Transactional
     @RequestMapping(value = "/books/all", method = RequestMethod.POST)
     public BookResponse getBooks() {
-        List<Book> list = bookRepository.findTop100ByTitle();
+        List<Book> list = bookRepository.findByYear(2000L, new PageRequest(0, 100));
         return new BookResponse<>(list, list.size());
     }
 

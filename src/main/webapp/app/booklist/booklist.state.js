@@ -112,7 +112,7 @@
                 }).result.then(function() {
                     $state.go('booklist', null, { reload: true });
                 }, function() {
-                    $state.go('^');
+                    $state.go('booklist');
                 });
             }]
         });

@@ -11,13 +11,13 @@ import java.util.Objects;
  * A LastIndex.
  */
 
-@Document(collection = "lastIndex")
+@Document(collection = "LastIndex")
 public class LastIndex implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    private String id;
+    private Integer id;
 
     @Field("table")
     private String table;
@@ -25,11 +25,11 @@ public class LastIndex implements Serializable {
     @Field("value")
     private Integer value;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
