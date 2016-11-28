@@ -1,80 +1,59 @@
 entity Publisher{
-    id Integer
+    id Long,
     name String
 }
 
 entity Book {
-    id Integer
-    isbn String
-    title String
-    author String
-    year Integer
-    publisher Id Integer
-    imgSmall String
-    imgMedium String
+    id Long,
+    isbn String,
+    title String,
+    author String,
+    year Long,
+    publisherId Long,
+    imgSmall String,
+    imgMedium String,
     imgLarge String
 }
 
 entity Rate {
-    id Integer
-    userId String
-    bookId Integer
-    rate Integer
+    id Long,
+    userId String,
+    bookId Long,
+    rate Long
 }
 
 entity Countries{
-    id Integer
-    name String
+    id Long,
+    name String,
     currency String
 }
 
 entity JhiUser{
-    id String
-    login String
-    password String
-    firstName String
-    lastName String
-    activated String
-    langKey String
-    createdBy String
-    createdDay Date
-    authorities Array
-    countryId Integer
+    id String,
+    login String,
+    password String,
+    firstName String,
+    lastName String,
+    activated String,
+    langKey String,
+    createdBy String,
+    createdDay LocalDate,
+    countryId Long
 }
 
 entity Purchase{
-    id Integer
-    date Date
-    value Double
-    bookId Integer
-    userId String
+    id Long,
+    date LocalDate,
+    value Double,
+    bookId Long,
+    userId String,
 }
 
-relationship OneToMany{
-    Book{publisherId} to Publisher,
-    JhiUser{countryId} to Countries,
-    Rate{bookId} to Book,
-    Rate{userId} to JhiUser,
-    Purchase{bookId} to Book,
-    Purchase{userId} to JhiUser
+entity LastIndex{
+    id Long,
+    table String,
+    value Integer
 }
 
 
 
-
-
-
-
-entity UserBookViewerAy {
-	firstName String,
-	lastName String,
-	email String,
-	phoneNumber String,
-	hireDate ZonedDateTime,
-	salary Long
-}
-
-entity Administrator {
-    login String,
-    password String
-}

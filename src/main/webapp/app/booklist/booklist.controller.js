@@ -9,26 +9,17 @@
 
     function BooklistController(ngTableParams, $http, $state, usSpinnerService/*, NotificationService, sidebarService*/) {
         var vm = this;
-        vm.resourceUrl = 'api/users/all';
-        vm.title = 'Lista Uzytkownikow';
+        vm.resourceUrl = 'api/books/all';
+        vm.title = 'Lista Dostępnych Książek';
         vm.filter = {};
         vm.loginUser = '';
-        vm.sort = {'id': 'asc'};
+        vm.sort = {'title': 'asc'};
         vm.doSearch = doSearch;
-      //  vm.showDetailsBtn = showDetailsBtn;
-      //  vm.showDetails = showDetails;
-       // vm.displayPagesRange = displayPagesRange;
-
-        //initMenu();
+        vm.showDetails = showDetails;
         vm.tableParams = getTableParams();
+        vm.deleteBook=deleteBook;
+        vm.createBook=createBook;
 
-       /*function initMenu() {
-            sidebarService.getMenu(function (items) {
-                sidebarService.setMenu(items);
-            });
-
-            sidebarService.getQueuesProcessing();
-        }*/
 
         function getTableParams() {
             return new ngTableParams({
@@ -62,14 +53,21 @@
             vm.tableParams.reload();
         }
 
- /*       function showDetails(number, id) {
-            $state.go('app.processed-id', {number: number, id: id});
+        function showDetails(id) {
+            $state.go('booklist-details-id', {id: id});
         }
 
-        function showDetailsBtn(item) {
-            vm.loginUser = item.loginUser;
-            return true;
-        }*/
+        function createBook() {
+            $state.go('book-detail.edit');
+        }
+
+        function deleteBook(id) {
+            $http.delete('api/books/' + id).success(function(bookData) {
+                vm.book = bookData;
+            });
+        }
+
+
 
         function displayPagesRange() {
             var page = vm.tableParams.page();

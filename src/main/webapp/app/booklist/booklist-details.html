@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-md-6">
+        <img src="{{vm.book.imgLarge}}"/>
+    </div>
+    <div class="col-md-6">
+       </br></br>
+       Tytuł:: {{vm.book.title}} </br>
+       Autor: {{vm.book.author}} </br>
+       Rok wydania: {{vm.book.year}} </br>
+       ISBN: {{vm.book.isbn}}
+    </div>
+</div>
+
+<div class = "row">
+    <div class="col-md-8">
+    </div>
+    <div class="col-md-4">
+        <button type="button"  class="btn btn-angle btn-sm" ui-sref="buybook({id:vm.book.id})">
+            Wykup dostęp do książki
+        </button>
+    </div>
+</div>
+

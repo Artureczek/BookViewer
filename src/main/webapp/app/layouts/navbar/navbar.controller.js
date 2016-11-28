@@ -23,6 +23,7 @@
         vm.booklist = booklist;
         vm.toggleNavbar = toggleNavbar;
         vm.collapseNavbar = collapseNavbar;
+        vm.booklistBought = booklistBought;
         vm.$state = $state;
 
         function login() {
@@ -38,6 +39,10 @@
 
         function booklist() {
             $state.go('booklist');
+        }
+
+        function booklistBought() {
+            $state.go('booklistbought');
         }
 
         function toggleNavbar() {

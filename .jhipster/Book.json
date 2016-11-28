@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "isbn",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "author",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "year",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "publisherId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "imgSmall",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "imgMedium",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "imgLarge",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161122082227",
+    "entityTableName": "book",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

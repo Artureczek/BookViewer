@@ -1,31 +1,45 @@
 <h3>
     {{vm.title}}
 </h3>
-        <div class="panel panel-default">
-        <table ng-table="vm.tableParams" show-filter="false" class="table">
-            <tbody>
-            <tr ng-repeat="result in $data">
-                <td data-title="'Imie'" sortable="'id'">{{result.id}}</td>
-                <td data-title="'Nazwisko'" sortable="'lastName'">{{result.lastName}}</td>
-                <!--<td data-title="'Kolejka'" sortable="'nazwaKolejki'">{{item.nazwaKolejki}}</td>
-                <td data-title="'Organ'" sortable="'organ'">{{item.organ}}</td>
-                <td data-title="'Status'" sortable="'status'">{{item.status}}</td>
-                <td data-title="'Użytkownik'" sortable="'loginUser'">{{item.loginUser}}</td>
-                <td data-title="'Data przypisania'" sortable="'dataPrzypisania'">
-                    {{item.dataPrzypisania | date:'yyyy-MM-dd HH:mm:ss'}}
-                </td>
-                <td data-title="'Termin'" sortable="'termin'">
-                    {{item.termin | date:'yyyy-MM-dd HH:mm:ss'}}
-                </td>
-                <td data-title="'Akcja'">
-                    <div class="pull-right" ng-if="vm.showDetailsBtn(item)" is-user="{{item.loginUser}}">
-                        <button type="button" class="btn btn-angle btn-sm"
-                                ng-click="vm.showDetails(item.id, item.idPisma)">
-                            Podgląd
-                        </button>
-                    </div>
+<div class="panel panel-default">
+    <table ng-table="vm.tableParams" show-filter="false" class="table">
+        <tbody>
+        <tr ng-repeat="result in $data"><!--
+                <td>
+                    <img src = {{result.imgSmall}}>
                 </td>-->
-            </tr>
-            </tbody>
-        </table>
+            <td data-title="'Tytul'" sortable="'title'">{{result.title}}
+            <td data-title="'Autor'" sortable="'author'">{{result.author}}</td>
+            <td data-title="'ISBN'" sortable="'isbn'">{{result.isbn}}</td>
+            <td data-title="'Rok Wydania'" sortable="'year'">{{result.year}}</td>
+            <td data-title="'Akcja'">
+                <div class="btn-group flex-btn-group-container">
+                    <button type="button" class="btn btn-angle btn-sm"
+                            ng-click="vm.showDetails(result.id)">
+                        Szczegóły
+                    </button>
+                    <button type="submit" ng-click="vm.deleteBook(result.id)" class="btn btn-danger btn-sm"
+                            has-authority="ROLE_ADMIN">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                        <span class="hidden-xs hidden-sm"></span>
+                    </button>
+                    <button type="submit" ui-sref="editbook({id:result.id})"
+                            class="btn btn-primary btn-sm" has-authority="ROLE_ADMIN">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                        <span class="hidden-xs hidden-sm"></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    <div class="col-md-9">
     </div>
+    <div class="col-md-3">
+        <button class="btn btn-primary" ui-sref="createbook" has-authority="ROLE_ADMIN">
+            <span class="glyphicon glyphicon-flash"></span> <span>Dodaj nową książkę</span>
+        </button>
+    </div>
+</div>

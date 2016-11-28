@@ -1,0 +1,55 @@
+
+<div>
+    <h2><span>Jhi User</span> {{vm.jhiUser.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Login</span></dt>
+        <dd>
+            <span>{{vm.jhiUser.login}}</span>
+        </dd>
+        <dt><span>Password</span></dt>
+        <dd>
+            <span>{{vm.jhiUser.password}}</span>
+        </dd>
+        <dt><span>First Name</span></dt>
+        <dd>
+            <span>{{vm.jhiUser.firstName}}</span>
+        </dd>
+        <dt><span>Last Name</span></dt>
+        <dd>
+            <span>{{vm.jhiUser.lastName}}</span>
+        </dd>
+        <dt><span>Activated</span></dt>
+        <dd>
+            <span>{{vm.jhiUser.activated}}</span>
+        </dd>
+        <dt><span>Lang Key</span></dt>
+        <dd>
+            <span>{{vm.jhiUser.langKey}}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+            <span>{{vm.jhiUser.createdBy}}</span>
+        </dd>
+        <dt><span>Created Day</span></dt>
+        <dd>
+            <span>{{vm.jhiUser.createdDay | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Country Id</span></dt>
+        <dd>
+            <span>{{vm.jhiUser.countryId}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="jhi-user-detail.edit({id:vm.jhiUser.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

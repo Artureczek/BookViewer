@@ -1,0 +1,26 @@
+<h3>
+    {{vm.title}}
+</h3>
+<div class="panel panel-default">
+    <table ng-table="vm.tableParams" show-filter="false" class="table">
+        <tbody>
+        <tr ng-repeat="result in $data"><!--
+                <td>
+                    <img src = {{result.imgSmall}}>
+                </td>-->
+            <td data-title="'Tytul'" sortable="'title'">{{result.title}}
+            <td data-title="'Autor'" sortable="'author'">{{result.author}}</td>
+            <td data-title="'ISBN'" sortable="'isbn'">{{result.isbn}}</td>
+            <td data-title="'Rok Wydania'" sortable="'year'">{{result.year}}</td>
+            <td data-title="'Akcja'">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-angle btn-sm"
+                            ng-click="vm.showDetails(result.id)">
+                        Szczegóły
+                    </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

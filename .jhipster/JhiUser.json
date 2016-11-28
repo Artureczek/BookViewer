@@ -1,0 +1,47 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "login",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "password",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "activated",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "langKey",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdDay",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "countryId",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "20161122082230",
+    "entityTableName": "jhi_user",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

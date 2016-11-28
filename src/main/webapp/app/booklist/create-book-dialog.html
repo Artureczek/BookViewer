@@ -1,0 +1,98 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myBookLabel">
+            {{vm.title}}
+        </h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="control-label">Id</label>
+            <input type="number" class="form-control" name="id"
+                   ng-model="vm.book.id" ng-maxlength="50">
+
+            <div ng-show="editForm.id.$invalid">
+                <p class="help-block" ng-show="editForm.id.$error.maxlength">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Tytuł książki</label>
+            <input type="text" class="form-control" name="title"
+                   ng-model="vm.book.title" ng-maxlength="50">
+
+            <div ng-show="editForm.title.$invalid">
+                <p class="help-block" ng-show="editForm.title.$error.maxlength">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Imię i Nazwisko Autora</label>
+            <input type="text" class="form-control" name="author"
+                   ng-model="vm.book.author" ng-maxlength="50">
+
+            <div ng-show="editForm.author.$invalid">
+                <p class="help-block" ng-show="editForm.author.$error.maxlength">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Nazwa Wydawnictwa</label>
+            <input type="number" class="form-control" name="publisherId"
+                   ng-model="vm.book.publisherId" ng-maxlength="50">
+
+            <div ng-show="editForm.publisherId.$invalid">
+                <p class="help-block" ng-show="editForm.publisherId.$error.maxlength">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Numer ISBN</label>
+            <input type="number" class="form-control" name="isbn"
+                   ng-model="vm.book.isbn" ng-maxlength="50">
+
+            <div ng-show="editForm.isbn.$invalid">
+                <p class="help-block" ng-show="editForm.isbn.$error.maxlength">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Rok wydania</label>
+            <input type="number" class="form-control" name="year"
+                   ng-model="vm.book.year" ng-maxlength="50">
+
+            <div ng-show="editForm.year.$invalid">
+                <p class="help-block" ng-show="editForm.year.$error.maxlength">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Adres obrazka okladki</label>
+            <input type="text" class="form-control" name="imgLarge"
+                   ng-model="vm.book.imgLarge" ng-maxlength="200">
+
+            <div ng-show="editForm.imgLarge.$invalid">
+                <p class="help-block" ng-show="editForm.imgLarge.$error.maxlength">
+                    This field cannot be longer than 50 characters.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+        >Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Zapisz</span>
+        </button>
+    </div>
+</form>

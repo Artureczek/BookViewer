@@ -1,0 +1,84 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myJhiUserLabel">Create or edit a Jhi User</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.jhiUser.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.jhiUser.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_login">Login</label>
+            <input type="text" class="form-control" name="login" id="field_login"
+                    ng-model="vm.jhiUser.login"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_password">Password</label>
+            <input type="text" class="form-control" name="password" id="field_password"
+                    ng-model="vm.jhiUser.password"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" id="field_firstName"
+                    ng-model="vm.jhiUser.firstName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" id="field_lastName"
+                    ng-model="vm.jhiUser.lastName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_activated">Activated</label>
+            <input type="text" class="form-control" name="activated" id="field_activated"
+                    ng-model="vm.jhiUser.activated"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_langKey">Lang Key</label>
+            <input type="text" class="form-control" name="langKey" id="field_langKey"
+                    ng-model="vm.jhiUser.langKey"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                    ng-model="vm.jhiUser.createdBy"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_createdDay">Created Day</label>
+                <div class="input-group">
+                    <input id="field_createdDay" type="text" class="form-control" name="createdDay" uib-datepicker-popup="{{dateformat}}" ng-model="vm.jhiUser.createdDay" is-open="vm.datePickerOpenStatus.createdDay"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdDay')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_countryId">Country Id</label>
+            <input type="number" class="form-control" name="countryId" id="field_countryId"
+                    ng-model="vm.jhiUser.countryId"
+                     />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
