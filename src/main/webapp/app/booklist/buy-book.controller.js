@@ -5,9 +5,9 @@
         .module('bookViewerApp')
         .controller('BuyBookController', BuyBookController);
 
-    BuyBookController.$inject = ['Principal', '$http', '$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Book'];
+    BuyBookController.$inject = ['$state', 'Principal', '$http', '$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Book'];
 
-    function BuyBookController (Principal, $http, $timeout, $scope, $stateParams, $uibModalInstance, entity, Book) {
+    function BuyBookController ($state, Principal, $http, $timeout, $scope, $stateParams, $uibModalInstance, entity, Book) {
         var vm = this;
 
         vm.book = entity;
@@ -28,6 +28,8 @@
 
         function createPurchase(){
             $http.put('api/purchase/' + vm.settingsAccount.login + '/' + vm.book.id + '/' + vm.count).success(function() {
+                $state.go('booklist');
+                $uibModalInstance.dismiss('cancel');
             });
 
         }

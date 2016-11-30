@@ -6,16 +6,17 @@
         <tbody>
         <tr ng-repeat="result in $data"><!--
                 <td>
-                    <img src = {{result.imgSmall}}>
+                    <img src = {{result.result.imgSmall}}>
                 </td>-->
-            <td data-title="'Tytul'" sortable="'title'">{{result.title}}
-            <td data-title="'Autor'" sortable="'author'">{{result.author}}</td>
-            <td data-title="'ISBN'" sortable="'isbn'">{{result.isbn}}</td>
-            <td data-title="'Rok Wydania'" sortable="'year'">{{result.year}}</td>
+            <td data-title="'Tytul'" sortable="'title'">{{result.result.title}}
+            <td data-title="'Autor'" sortable="'author'">{{result.result.author}}</td>
+            <td data-title="'ISBN'" sortable="'isbn'">{{result.result.isbn}}</td>
+            <td data-title="'Rok Wydania'" sortable="'year'">{{result.result.year}}</td>
+            <td data-title="'Status'" sortable="'status'">{{vm.compareDates(result.finishDate)}}</td>
             <td data-title="'Akcja'">
                 <div class="pull-right">
                     <button type="button" class="btn btn-angle btn-sm"
-                            ng-click="vm.showDetails(result.id)">
+                            ng-click="vm.showDetails(result.result.id)">
                         Szczegóły
                     </button>
                 </div>

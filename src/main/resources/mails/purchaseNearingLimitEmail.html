@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{email.purchase.term.title}">Purchase Term</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="#{email.purchase.term.greeting(${user.login})}">
+    Dear
+</p>
+<p th:text="#{email.purchase.term.text1}">
+    Your purchase has only one day left until your access is terminated
+</p>
+<p>
+    <span th:text="#{email.purchase.term.text2}">Regards, </span>
+    <br/>
+    <em th:text="#{email.purchase.term.signature}">JHipster.</em>
+</p>
+</body>
+</html>

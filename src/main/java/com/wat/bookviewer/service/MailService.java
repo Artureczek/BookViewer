@@ -78,6 +78,32 @@ public class MailService {
     }
 
     @Async
+    public void sendPurchaseActivationEmail(User user, String baseUrl) {
+        user.setEmail("arturkielbiewski@gmail.com");
+        log.debug("Sending purchase activation e-mail to '{}'", user.getEmail());
+        Locale locale = Locale.forLanguageTag(user.getLangKey());
+        Context context = new Context(locale);
+        context.setVariable(USER, user);
+        context.setVariable(BASE_URL, baseUrl);
+        String content = templateEngine.process("creationEmail", context);
+        String subject = messageSource.getMessage("email.activation.title", null, locale);
+        sendEmail(user.getEmail(), subject, content, false, true);
+    }
+
+    @Async
+    public void sendPurchaseNearingLimitEmail(User user, String baseUrl) {
+        user.setEmail("arturkielbiewski@gmail.com");
+        log.debug("Sending purchase nearing limit e-mail to '{}'", user.getEmail());
+        Locale locale = Locale.forLanguageTag(user.getLangKey());
+        Context context = new Context(locale);
+        context.setVariable(USER, user);
+        context.setVariable(BASE_URL, baseUrl);
+        String content = templateEngine.process("purchaseNearingLimitEmail", context);
+        String subject = messageSource.getMessage("email.purchase.term.title", null, locale);
+        sendEmail(user.getEmail(), subject, content, false, true);
+    }
+
+    @Async
     public void sendCreationEmail(User user, String baseUrl) {
         log.debug("Sending creation e-mail to '{}'", user.getEmail());
         Locale locale = Locale.forLanguageTag(user.getLangKey());

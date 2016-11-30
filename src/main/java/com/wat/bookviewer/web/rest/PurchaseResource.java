@@ -7,6 +7,7 @@ import com.wat.bookviewer.domain.Purchase;
 
 import com.wat.bookviewer.domain.User;
 import com.wat.bookviewer.domain.reponse.BookResponse;
+import com.wat.bookviewer.domain.reponse.SingleBookRespone;
 import com.wat.bookviewer.repository.BookRepository;
 import com.wat.bookviewer.repository.LastIndexRepository;
 import com.wat.bookviewer.repository.PurchaseRepository;
@@ -174,8 +175,8 @@ public class PurchaseResource {
         Optional<User> maybeUser = userRepository.findOneByLogin(login);
 
         List<Purchase> purchaseList = purchaseRepository.findAllByUserId(maybeUser.get().getId());
-        List<Book> bookList = new ArrayList<>();
-        purchaseList.stream().forEach(e-> bookList.add(bookRepository.findById((int)(long)e.getBookId())));
+        List<SingleBookRespone> bookList = new ArrayList<>();
+        purchaseList.stream().forEach(e-> bookList.add(new SingleBookRespone(bookRepository.findById((int)(long)e.getBookId()), e.getDate().plusDays(e.getValue().longValue()))));
 
         return new BookResponse<>(bookList, bookList.size());
     }

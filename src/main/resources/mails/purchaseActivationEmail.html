@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{email.purchase.activation.title}">JHipster activation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="#{email.purchase.activation.greeting(${user.login})}">
+    Dear
+</p>
+<p th:text="#{email.purchase.activation.text1}">
+    Your purchase has been activated
+</p>
+<p>
+    <span th:text="#{email.purchase.activation.text2}">Regards, </span>
+    <br/>
+    <em th:text="#{email.purchase.signature}">JHipster.</em>
+</p>
+</body>
+</html>

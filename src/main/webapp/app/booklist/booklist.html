@@ -2,12 +2,9 @@
     {{vm.title}}
 </h3>
 <div class="panel panel-default">
-    <table ng-table="vm.tableParams" show-filter="false" class="table">
+    <table ng-table="vm.tableParams" show-filter="true" class="table">
         <tbody>
-        <tr ng-repeat="result in $data"><!--
-                <td>
-                    <img src = {{result.imgSmall}}>
-                </td>-->
+        <tr ng-repeat="result in $data">
             <td data-title="'Tytul'" sortable="'title'">{{result.title}}
             <td data-title="'Autor'" sortable="'author'">{{result.author}}</td>
             <td data-title="'ISBN'" sortable="'isbn'">{{result.isbn}}</td>

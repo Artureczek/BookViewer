@@ -17,6 +17,8 @@
         vm.showDetails = showDetails;
         vm.tableParams = getTableParams();
         vm.settingsAccount = null;
+        vm.status = 'Aktywny';
+        vm.compareDates = compareDates;
 
         var copyAccount = function (account) {
             return {
@@ -32,6 +34,20 @@
         Principal.identity().then(function(account) {
             vm.settingsAccount = copyAccount(account);
         });
+
+        function compareDates(Datee){
+            var StopDate = new Date(Datee);
+            var Today = new Date();
+
+            if (Today > StopDate) {
+                return 'Po Terminie'
+            }
+            else{
+                return 'Aktywny'
+            }
+
+        }
+
 
 
         function getTableParams() {

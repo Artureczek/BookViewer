@@ -5,6 +5,7 @@ package com.wat.bookviewer.service;
  */
 public interface DeletePurchaseService {
 
-    void deletePurchase();
+    void checkIfPurchaseIsPastTermOrDayBefore();
+
 
 }
