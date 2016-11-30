@@ -47,6 +47,7 @@ entity Purchase{
     value Double,
     bookId Long,
     userId String,
+    status String
 }
 
 entity LastIndex{
