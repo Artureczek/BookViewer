@@ -15,6 +15,8 @@ import com.wat.bookviewer.repository.UserRepository;
 import com.wat.bookviewer.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -162,6 +164,7 @@ public class PurchaseResource {
         purchase.setUserId(userId);
         purchase.setDate(LocalDate.now());
         purchase.setValue(Double.valueOf(count));
+        purchase.setStatus("Oczekujący");
         lastIndexRepository.save(lastIndex);
         purchaseRepository.save(purchase);
 
@@ -169,15 +172,38 @@ public class PurchaseResource {
 
     @Timed
     @Transactional
+    @RequestMapping(value = "/purchase/details/{id}", method = RequestMethod.GET)
+    public Purchase getPurchaseById(@PathVariable Integer id) {
+        return purchaseRepository.findOnyById(id);
+    }
+
+    @Timed
+    @Transactional
+    @RequestMapping(value = "/purchases/all", method = RequestMethod.POST)
+    public BookResponse getPurchases() {
+        List<Purchase> list = purchaseRepository.findAll();
+        return new BookResponse<>(list, list.size());
+    }
+
+    @Timed
+    @Transactional
+    @RequestMapping(value = "/purchases/activate/{id}", method = RequestMethod.POST)
+    public void activatePurchase(@PathVariable Integer id) {
+        Purchase purchase = purchaseRepository.findOnyById(id);
+        purchase.setStatus("Aktywny");
+        purchaseRepository.save(purchase);
+    }
+
+
+    @Timed
+    @Transactional
     @RequestMapping(value = "/purchasedbooks/{login}", method = RequestMethod.POST)
     public BookResponse getUsersPurchases(@PathVariable String login) {
 
         Optional<User> maybeUser = userRepository.findOneByLogin(login);
-
         List<Purchase> purchaseList = purchaseRepository.findAllByUserId(maybeUser.get().getId());
         List<SingleBookRespone> bookList = new ArrayList<>();
-        purchaseList.stream().forEach(e-> bookList.add(new SingleBookRespone(bookRepository.findById((int)(long)e.getBookId()), e.getDate().plusDays(e.getValue().longValue()))));
-
+        purchaseList.stream().forEach(e-> bookList.add(new SingleBookRespone(bookRepository.findById((int)(long)e.getBookId()), e.getStatus() ,e.getId())));
         return new BookResponse<>(bookList, bookList.size());
     }
 

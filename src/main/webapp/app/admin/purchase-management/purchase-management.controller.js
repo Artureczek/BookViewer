@@ -3,23 +3,22 @@
 
     angular
         .module('bookViewerApp')
-        .controller('BooklistController', BooklistController);
+        .controller('PurchaseManagementController', PurchaseManagementController);
 
-    BooklistController.$inject = ['ngTableParams', '$http', '$state', 'usSpinnerService'];
+    PurchaseManagementController.$inject = ['ngTableParams', '$http', '$state', 'usSpinnerService'];
 
-    function BooklistController(ngTableParams, $http, $state, usSpinnerService) {
+    function PurchaseManagementController(ngTableParams, $http, $state, usSpinnerService) {
         var vm = this;
-        vm.resourceUrl = 'api/books/all';
-        vm.title = 'Lista Dostępnych Książek';
+        vm.resourceUrl = 'api/purchases/all';
+        vm.title = 'Lista Dokonanych Zakupów';
         vm.filter = {};
-        vm.books = [];
         vm.loginUser = '';
-        vm.sort = {'title': 'asc'};
+        vm.sort = {'id': 'asc'};
         vm.doSearch = doSearch;
-        vm.showDetails = showDetails;
         vm.tableParams = getTableParams();
-        vm.deleteBook=deleteBook;
-        vm.createBook=createBook;
+        vm.activatePurchase = activatePurchase;
+        vm.purchase = null;
+
 
         function getTableParams() {
             return new ngTableParams({
@@ -52,20 +51,13 @@
             vm.tableParams.reload();
         }
 
-        function showDetails(id) {
-            $state.go('booklist-details-id', {id: id});
-        }
-
-        function createBook() {
-            $state.go('book-detail.edit');
-        }
-
-        function deleteBook(id) {
-            $http.delete('api/books/' + id).success(function(bookData) {
-                vm.book = bookData;
+        function activatePurchase(id) {
+            $http.post('api/purchases/activate/' + id).success(function(bookData) {
+                vm.purchase = bookData;
             });
             $state.reload();
         }
+
         function startSpin() {
             usSpinnerService.spin('spinner-1');
         }

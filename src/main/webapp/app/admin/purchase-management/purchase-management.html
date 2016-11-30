@@ -1,0 +1,35 @@
+<h3>
+    {{vm.title}}
+</h3>
+<div class="panel panel-default">
+    <table ng-table="vm.tableParams"  class="table table-condensed table-bordered table-striped">
+        <tbody>
+        <tr ng-repeat="result in $data">
+            <td data-title="'Id Zamówienia'" sortable="'id'">{{result.id}}</td>
+            <td data-title="'Data złożenia'" sortable="'date'">{{result.date}}</td>
+            <td data-title="'Liczba'" sortable="'value'">{{result.value}}</td>
+            <td data-title="'Id Książki'" sortable="'bookId'">{{result.bookId}}</td>
+            <td data-title="'Id Użytkownika'" sortable="'userId'">{{result.userId}}</td>
+            <td data-title="'Status'" sortable="'status'">{{result.status}}</td>
+            <td data-title="'Akcja'">
+                <div class="btn-group flex-btn-group-container">
+                    <button type="submit" ng-click="vm.activatePurchase(result.id)"
+                            class="btn btn-danger btn-sm"  has-authority="ROLE_ADMIN">
+                        <span class="glyphicon glyphicon-ok"></span>
+                        <span class="hidden-xs hidden-sm"></span>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+ <!--   <div class="row">
+        <div class="col-md-9">
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary" ui-sref="createbook" has-authority="ROLE_ADMIN">
+                <span class="glyphicon glyphicon-flash"></span> <span>Dodaj nową książkę</span>
+            </button>
+        </div>
+    </div>-->
+</div>

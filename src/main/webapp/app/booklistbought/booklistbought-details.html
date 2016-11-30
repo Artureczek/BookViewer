@@ -7,7 +7,8 @@
         Tytuł:: {{vm.book.title}} </br>
         Autor: {{vm.book.author}} </br>
         Rok wydania: {{vm.book.year}} </br>
-        ISBN: {{vm.book.isbn}}
+        ISBN: {{vm.book.isbn}} </br>
+        Status zakupu: {{vm.purchase.status}}
     </div>
 </div>
 
@@ -15,7 +16,7 @@
     <div class="col-md-8">
     </div>
     <div class="col-md-4">
-        <button type="button" class="btn btn-angle btn-sm" ng-click="vm.showContent()">
+        <button type="button" ng-disabled="vm.isDisabled()" class="btn btn-angle btn-sm" ng-click="vm.showContent()">
             Wyswietl zawartosc ksiazki
         </button>
     </div>

@@ -43,16 +43,12 @@ public class DeletePurchaseServiceImpl implements DeletePurchaseService {
             LocalDate term = e.getDate().plusDays(e.getValue().longValue());
             long daysBetween = DAYS.between(LocalDate.now(),e.getDate().plusDays(e.getValue().longValue()));
 
-            /*if(term.isBefore(LocalDate.now())){
-                //e.setStatus("inactive");
+            if(term.isBefore(LocalDate.now())){
+                e.setStatus("Nieaktywny");
             }
-            else */
-
-            if(term.isAfter(LocalDate.now()) && daysBetween == 1){
-
+            else if(term.isAfter(LocalDate.now()) && daysBetween == 1){
                 Optional<User> user = userRepository.findOneById(e.getUserId());
                 mailService.sendPurchaseNearingLimitEmail(user.get() ,"http://myhost:28080/");
-                purchaseRepository.delete(e);
             }
 
 

@@ -12,11 +12,11 @@
             <td data-title="'Autor'" sortable="'author'">{{result.result.author}}</td>
             <td data-title="'ISBN'" sortable="'isbn'">{{result.result.isbn}}</td>
             <td data-title="'Rok Wydania'" sortable="'year'">{{result.result.year}}</td>
-            <td data-title="'Status'" sortable="'status'">{{vm.compareDates(result.finishDate)}}</td>
+            <td data-title="'Status'" sortable="'status'">{{result.status}}</td>
             <td data-title="'Akcja'">
                 <div class="pull-right">
                     <button type="button" class="btn btn-angle btn-sm"
-                            ng-click="vm.showDetails(result.result.id)">
+                            ng-click="vm.showDetails(result.result.id, result.purchaseId)">
                         Szczegóły
                     </button>
                 </div>

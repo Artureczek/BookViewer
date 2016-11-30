@@ -10,20 +10,14 @@ import java.time.LocalDate;
 public class SingleBookRespone {
 
     private Book result;
+    private String status;
+    private Integer purchaseId;
 
-    private LocalDate finishDate;
 
-    public SingleBookRespone(Book result, LocalDate finishDate) {
+    public SingleBookRespone(Book result, String status, Integer purchaseId) {
         this.result = result;
-        this.finishDate = finishDate;
-    }
-
-    public LocalDate getFinishDate() {
-        return finishDate;
-    }
-
-    public void setFinishDate(LocalDate finishDate) {
-        this.finishDate = finishDate;
+        this.status = status;
+        this.purchaseId = purchaseId;
     }
 
     public Book getResult() {
@@ -32,5 +26,21 @@ public class SingleBookRespone {
 
     public void setResult(Book result) {
         this.result = result;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Integer getPurchaseId() {
+        return purchaseId;
+    }
+
+    public void setPurchaseId(Integer purchaseId) {
+        this.purchaseId = purchaseId;
     }
 }

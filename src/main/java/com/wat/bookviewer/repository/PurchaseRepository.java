@@ -14,6 +14,7 @@ public interface PurchaseRepository extends MongoRepository<Purchase,Integer> {
     @Override
     void delete(Purchase t);
 
+    Purchase findOnyById(Integer id);
     List<Purchase> findAllByUserId(String userId);
 
 

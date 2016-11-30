@@ -2,15 +2,14 @@ package com.wat.bookviewer.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.wat.bookviewer.domain.Book;
-
-import com.wat.bookviewer.domain.User;
 import com.wat.bookviewer.domain.reponse.BookResponse;
 import com.wat.bookviewer.repository.BookRepository;
 import com.wat.bookviewer.repository.UserRepository;
 import com.wat.bookviewer.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -139,9 +138,9 @@ public class BookResource {
     @Timed
     @Transactional
     @RequestMapping(value = "/books/all", method = RequestMethod.POST)
-    public BookResponse getBooks() {
-        List<Book> list = bookRepository.findByYear(2000L, new PageRequest(0, 100));
-        return new BookResponse<>(list, list.size());
+    public BookResponse getBooks(Pageable pageable) {
+        Page<Book> list = bookRepository.findAllByAuthor("Muriel Jensen", pageable);
+        return new BookResponse<>(list.getContent(),(int)list.getTotalElements());
     }
 
     @Timed

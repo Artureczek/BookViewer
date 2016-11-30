@@ -12,10 +12,17 @@
         var vm = this;
         vm.backToList = backToList;
         vm.book;
+        vm.purchase;
         vm.settingsAccount = null;
         vm.showContent = showContent;
         vm.login = LoginService.open;
+        vm.isDisabled = isDisabled;
         $scope.id = $stateParams.id;
+        $scope.idPur = $stateParams.idPur;
+
+        function isDisabled(){
+           return !angular.equals(vm.purchase.status, 'Aktywny');
+        }
 
         vm.downloadData = function () {
 
@@ -24,6 +31,14 @@
             });
         };
         vm.downloadData();
+
+        vm.downloadPurchaseData = function () {
+
+            $http.get('api/purchase/details/' + $scope.idPur).success(function(purchaseData) {
+                vm.purchase = purchaseData;
+            });
+        };
+        vm.downloadPurchaseData();
 
         function showContent() {
             $state.go('bookcontent');

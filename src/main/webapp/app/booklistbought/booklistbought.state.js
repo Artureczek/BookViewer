@@ -25,7 +25,7 @@
                 }
             }).state('booklistbought-details-id', {
                 parent: 'app',
-                url: '/booklistbought/detail/:id',
+                url: '/booklistbought/detail/:id/:idPur',
                 data: {
                     authorities: ['ROLE_USER'],
                     name: 'BOOKLISTBOUGHT-DETAILS'

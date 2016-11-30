@@ -2,7 +2,7 @@
     {{vm.title}}
 </h3>
 <div class="panel panel-default">
-    <table ng-table="vm.tableParams" show-filter="true" class="table">
+    <table ng-table="vm.tableParams"  class="table table-condensed table-bordered table-striped">
         <tbody>
         <tr ng-repeat="result in $data">
             <td data-title="'Tytul'" sortable="'title'">{{result.title}}
@@ -30,7 +30,6 @@
         </tr>
         </tbody>
     </table>
-</div>
 <div class="row">
     <div class="col-md-9">
     </div>
@@ -39,4 +38,5 @@
             <span class="glyphicon glyphicon-flash"></span> <span>Dodaj nową książkę</span>
         </button>
     </div>
+</div>
 </div>
