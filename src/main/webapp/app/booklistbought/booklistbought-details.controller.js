@@ -12,7 +12,7 @@
         var vm = this;
         vm.backToList = backToList;
         vm.book;
-        vm.purchase;
+        vm.purchase = false;
         vm.settingsAccount = null;
         vm.showContent = showContent;
         vm.login = LoginService.open;

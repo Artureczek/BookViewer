@@ -138,30 +138,6 @@ public class LastIndexResourceIntTest {
                 .andExpect(status().isNotFound());
     }
 
-    @Test
-    public void updateLastIndex() throws Exception {
-        // Initialize the database
-        lastIndexRepository.save(lastIndex);
-        int databaseSizeBeforeUpdate = lastIndexRepository.findAll().size();
-
-        // Update the lastIndex
-        LastIndex updatedLastIndex = lastIndexRepository.findOne(lastIndex.getId());
-        updatedLastIndex
-                .table(UPDATED_TABLE)
-                .value(UPDATED_VALUE);
-
-        restLastIndexMockMvc.perform(put("/api/last-indices")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(updatedLastIndex)))
-                .andExpect(status().isOk());
-
-        // Validate the LastIndex in the database
-        List<LastIndex> lastIndices = lastIndexRepository.findAll();
-        assertThat(lastIndices).hasSize(databaseSizeBeforeUpdate);
-        LastIndex testLastIndex = lastIndices.get(lastIndices.size() - 1);
-        assertThat(testLastIndex.getTable()).isEqualTo(UPDATED_TABLE);
-        assertThat(testLastIndex.getValue()).isEqualTo(UPDATED_VALUE);
-    }
 
     @Test
     public void deleteLastIndex() throws Exception {

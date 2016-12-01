@@ -34,6 +34,7 @@ public class DeletePurchaseServiceImpl implements DeletePurchaseService {
 
     @Override
     @Scheduled(cron="0 0 0 * * ?")
+    //@Scheduled(fixedRate = 4000)
     public void checkIfPurchaseIsPastTermOrDayBefore() {
 
         List<Purchase> purchaseList = purchaseRepository.findAll();

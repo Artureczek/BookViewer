@@ -203,7 +203,7 @@ public class PurchaseResource {
         Optional<User> maybeUser = userRepository.findOneByLogin(login);
         List<Purchase> purchaseList = purchaseRepository.findAllByUserId(maybeUser.get().getId());
         List<SingleBookRespone> bookList = new ArrayList<>();
-        purchaseList.stream().forEach(e-> bookList.add(new SingleBookRespone(bookRepository.findById((int)(long)e.getBookId()), e.getStatus() ,e.getId())));
+        purchaseList.stream().forEach(e-> bookList.add(new SingleBookRespone(bookRepository.findById((int)(long)e.getBookId()), e.getStatus() ,e.getId(), e.getDate().plusDays(e.getValue().longValue()))));
         return new BookResponse<>(bookList, bookList.size());
     }
 
